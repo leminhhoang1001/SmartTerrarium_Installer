@@ -1,0 +1,114 @@
+:root {
+    --primary: #2e8b57;
+    --bg: #e8f5e9;
+    --card-bg: #ffffff;
+    --text: #333;
+}
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    position: relative; /* Quan trọng: để căn vị trí nút ngôn ngữ */
+}
+
+/* --- NÚT NGÔN NGỮ (MỚI) --- */
+#lang-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primary);
+    transition: 0.2s;
+}
+#lang-btn:hover {
+    background-color: #f1f8e9;
+}
+.flag-icon {
+    width: 20px;
+    height: 14px;
+    border-radius: 2px;
+    object-fit: cover;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+/* -------------------------- */
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+p { color: #666; line-height: 1.6; margin-bottom: 25px; }
+
+.steps {
+    text-align: left;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary);
+}
+.steps h3 { margin: 0 0 10px 0; font-size: 16px; color: #444; }
+.steps ol { margin: 0; padding-left: 20px; color: #555; }
+.steps li { margin-bottom: 8px; }
+
+/* Tùy chỉnh nút bấm của ESP Web Tools */
+esp-web-install-button {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Note driver */
+.driver-note {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+.driver-note a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+.driver-note a:hover {
+    text-decoration: underline;
+}
+
+.browser-support {
+    background: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ffeeba;
+    display: none; /* Ẩn mặc định, JS sẽ hiện nếu cần */
+}

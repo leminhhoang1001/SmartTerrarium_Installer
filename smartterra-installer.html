@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt Smart Terrarium Firmware</title>
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    <link rel="stylesheet" href="terra-style.css">
+</head>
+<body>
+
+    <div class="container">
+        <button id="lang-btn" onclick="toggleLanguage()">
+            🇻🇳 VN
+        </button>
+
+        <h1>🌿 Smart Terrarium</h1>
+        <p data-lang="desc">Công cụ nạp phần mềm tự động cho hệ thống chăm sóc bể bán cạn thông minh.</p>
+
+        <div class="browser-support" id="browser-msg" data-lang="browser_msg">
+            ⚠️ Yêu cầu trình duyệt: Chrome, Edge hoặc Opera trên máy tính.
+        </div>
+
+        <div class="steps">
+            <h3 data-lang="step_title">Hướng dẫn cài đặt:</h3>
+            <ol>
+                <li data-lang="step_1">Kết nối mạch ESP32 vào máy tính qua cáp USB.</li>
+                <li data-lang="step_2">Nhấn nút <b>"CONNECT"</b> bên dưới.</li>
+                <li data-lang="step_3">Chọn cổng COM của mạch và nhấn <b>"Kết nối"</b>.</li>
+                <li data-lang="step_4">Chọn <b>"INSTALL SMART TERRARIUM"</b> và chờ đợi.</li>
+            </ol>
+        </div>
+
+        <esp-web-install-button 
+            manifest="manifest.json"
+        >
+            <button slot="activate" id="connect-btn" style="
+                background: #2e8b57; 
+                color: white; 
+                border: none; 
+                padding: 12px 30px; 
+                border-radius: 50px; 
+                font-size: 16px; 
+                font-weight: bold; 
+                cursor: pointer; 
+                box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4);
+                transition: transform 0.2s;
+            " onmouseover="this.style.transform='scale(1.05)'" 
+              onmouseout="this.style.transform='scale(1)'">
+                🚀 <span data-lang="btn_connect">KẾT NỐI & CÀI ĐẶT</span>
+            </button>
+        </esp-web-install-button>
+
+        <div class="driver-note">
+            <span data-lang="note_driver_text">Không tìm thấy thiết bị? Hãy cài đặt</span> 
+            <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank" data-lang="driver_cp">Driver CP210x</a> 
+            <span data-lang="note_or">hoặc</span> 
+            <a href="https://wch.cn/downloads/CH341SER_ZIP.html" target="_blank" data-lang="driver_ch">CH340</a>.
+        </div>
+    </div>
+
+    <script>
+        // --- 1. DỮ LIỆU CỜ (Base64 để chạy mượt, không lỗi emoji Win) ---
+        const flags = {
+            vi: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjAwIj48cGF0aCBmaWxsPSIjZGEyNTFkIiBkPSJNMCAwaDkwMHY2MDBIMHoiLz48cGF0aCBmaWxsPSIjZmZmZjAwIiBkPSJNNDUwIDEyNWw5Mi44IDI4NS42LTI0Mi45LTE3Ni41aDMwMC4yTDM1Ny4yIDQxMC42eiIvPjwvc3ZnPg==',
+            en: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjM1IDY1MCI+PHBhdGggZD0iTTAgMGgxMjM1djY1MEgwWiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0wIDkyaDEyMzVNMCAyMTRoMTIzNU0wIDMzN2gxMjM1TTAgNDU5aDEyMzVNMCA1ODJoMTIzNSIgc3Ryb2tlPSIjYmUyYTM4IiBzdHJva2Utd2lkdGg9IjYxLjUiLz48cGF0aCBkPSJNMCAwaDQ5NHYzNzFIMFoiIGZpbGw9IiMzYzNiNmUiLz48ZyBmaWxsPSIjZmZmIj48ZyBpZD0icyI+PGcgaWQ9ImMiPjxwYXRoIGlkPSJ0IiBkPSJNMjQ3IDE4bDEwIDI4SDIzN2wxMCAyOHoiLz48dXNlIHhyZWY9IiN0IiB4PSIyNSIvPjx1c2UgeHJlZj0iI3QiIHg9IjUwIi8+PHVzZSB4cmVmPSIjdCIgeD0iNzUiLz48dXNlIHhyZWY9IiN0IiB4PSIxMDAiLz48L2c+PHVzZSB4cmVmPSIjYyIgeT0iMjUiLz48dXNlIHhyZWY9IiNjIiB5PSI1MCIvPjx1c2UgeHJlZj0iI2MiIHk9Ijc1Ii8+PHVzZSB4cmVmPSIjYyIgeT0iMTAwIi8+PC9nPjx1c2UgeHJlZj0iI3MiIHk9IjEzIiB4PSIxMyIvPjx1c2UgeHJlZj0iI3MiIHk9IjM4IiB4PSIxMyIvPjx1c2UgeHJlZj0iI3MiIHk9IjYzIiB4PSIxMyIvPjx1c2UgeHJlZj0iI3MiIHk9Ijg4IiB4PSIxMyIvPjwvZz48L3N2Zz4='
+        };
+
+        // --- 2. TỪ ĐIỂN DỊCH ---
+        const translations = {
+            vi: {
+                desc: "Công cụ nạp phần mềm tự động cho hệ thống chăm sóc bể bán cạn thông minh.",
+                browser_msg: "⚠️ Yêu cầu trình duyệt: Chrome, Edge hoặc Opera trên máy tính.",
+                step_title: "Hướng dẫn cài đặt:",
+                step_1: "Kết nối mạch ESP32 vào máy tính qua cáp USB.",
+                step_2: "Nhấn nút <b>\"CONNECT\"</b> bên dưới.",
+                step_3: "Chọn cổng COM của mạch và nhấn <b>\"Kết nối\"</b>.",
+                step_4: "Chọn <b>\"INSTALL SMART TERRARIUM\"</b> và chờ đợi.",
+                btn_connect: "KẾT NỐI & CÀI ĐẶT",
+                note_driver_text: "Không tìm thấy thiết bị? Hãy cài đặt",
+                driver_cp: "Driver CP210x",
+                note_or: "hoặc",
+                driver_ch: "CH340"
+            },
+            en: {
+                desc: "Automated firmware flashing tool for the Smart Terrarium system.",
+                browser_msg: "⚠️ Browser Requirement: Chrome, Edge, or Opera on Desktop.",
+                step_title: "Installation Guide:",
+                step_1: "Connect ESP32 board to PC via USB cable.",
+                step_2: "Click the <b>\"CONNECT\"</b> button below.",
+                step_3: "Select the device COM port and click <b>\"Connect\"</b>.",
+                step_4: "Select <b>\"INSTALL SMART TERRARIUM\"</b> and wait.",
+                btn_connect: "CONNECT & INSTALL",
+                note_driver_text: "Device not found? Install drivers:",
+                driver_cp: "CP210x Driver",
+                note_or: "or",
+                driver_ch: "CH340"
+            }
+        };
+
+        // --- 3. LOGIC CHUYỂN ĐỔI ---
+        let currentLang = localStorage.getItem('installer_lang') || 'vi';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            localStorage.setItem('installer_lang', currentLang);
+            applyLanguage();
+        }
+
+        function applyLanguage() {
+            const t = translations[currentLang];
+            
+            // Cập nhật text thông thường
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (t[key]) {
+                    // Dùng innerHTML để giữ lại các thẻ <b> bên trong text
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Cập nhật nút Cờ
+            const btn = document.getElementById('lang-btn');
+            const flagSrc = currentLang === 'vi' ? flags.vi : flags.en;
+            btn.innerHTML = `<img src="${flagSrc}" class="flag-icon"> ${currentLang.toUpperCase()}`;
+        }
+
+        // --- 4. KIỂM TRA TRÌNH DUYỆT (Giữ nguyên logic cũ) ---
+        if ("serial" in navigator) {
+            document.getElementById("browser-msg").style.display = "none";
+        } else {
+            document.getElementById("browser-msg").style.display = "block";
+        }
+
+        // Khởi chạy ngôn ngữ khi load
+        applyLanguage();
+
+    </script>
+
+</body>
+</html>

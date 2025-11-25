@@ -1,0 +1,16 @@
+{
+  "name": "Smart Terrarium",
+  "version": "1.0.0",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "./bin/bootloader.bin", "offset": 4096 },
+        { "path": "./bin/partitions.bin", "offset": 32768 },
+        { "path": "./bin/firmware.bin", "offset": 65536 },
+        { "path": "./bin/littlefs.bin", "offset": 2686976 }
+      ]
+    }
+  ]
+}
