@@ -147,7 +147,4 @@ Connect ESP32 GPIO pins to your modules as follows:
 
 <div align="center">
   <p>Developed with ❤️ by Luc4sL3e</p>
-  <p>
-    <a href="[Link to Source Code Repo]">View Source Code</a>
-  </p>
 </div>
