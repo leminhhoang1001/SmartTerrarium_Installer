@@ -18,7 +18,7 @@
 Chào mừng đến với trang cài đặt tự động của dự án **Smart Terrarium**. Đây là công cụ giúp bạn nạp phần mềm (Firmware) cho mạch ESP32 trực tiếp từ trình duyệt web mà không cần cài đặt phần mềm lập trình phức tạp.
 
 👉 **TRUY CẬP TRANG CÀI ĐẶT TẠI ĐÂY:** [Link GitHub Pages của bạn]
-*(Ví dụ: https://yourusername.github.io/SmartTerrarium_Installer/)*
+*(Ví dụ: https://leminhhoang1001.github.io/SmartTerrarium_Installer/smartterra-installer)*
 
 ### 📖 Giới Thiệu Dự Án
 **Smart Terrarium** là hệ thống AIoT chuyên nghiệp để chăm sóc bể bán cạn, Vivarium hoặc Paludarium.
@@ -85,7 +85,7 @@ Kết nối các chân GPIO của ESP32 với các module như sau:
 Welcome to the **Smart Terrarium Web Installer**. This tool allows you to flash the firmware directly to your ESP32 board from your web browser, eliminating the need for complex IDE installations.
 
 👉 **ACCESS INSTALLER HERE:** [Your GitHub Pages Link]
-*(E.g., https://yourusername.github.io/SmartTerrarium_Installer/)*
+*(E.g., https://leminhhoang1001.github.io/SmartTerrarium_Installer/smartterra-installer)*
 
 ### 📖 Project Overview
 **Smart Terrarium** is a professional AIoT system designed for automated care of Terrariums, Vivariums, or Paludariums.
