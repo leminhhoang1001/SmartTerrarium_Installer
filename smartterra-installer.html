@@ -21,6 +21,14 @@
             ⚠️ Yêu cầu trình duyệt: Chrome, Edge hoặc Opera trên máy tính.
         </div>
 
+        <div class="warning-box">
+            <div style="font-weight: bold; margin-bottom: 5px;">⚠️ <span data-lang="warn_title">LƯU Ý QUAN TRỌNG:</span></div>
+            <span data-lang="warn_content">
+                Để tránh lỗi dữ liệu cũ, tại bước xác nhận cài đặt, vui lòng tích chọn:
+            </span><br>
+            <span class="highlight-erase">✅ Erase device (Xóa thiết bị)</span>
+        </div>
+
         <div class="steps">
             <h3 data-lang="step_title">Hướng dẫn cài đặt:</h3>
             <ol>
@@ -60,17 +68,21 @@
     </div>
 
     <script>
-        // --- 1. DỮ LIỆU CỜ (Base64 để chạy mượt, không lỗi emoji Win) ---
         const flags = {
             vi: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjAwIj48cGF0aCBmaWxsPSIjZGEyNTFkIiBkPSJNMCAwaDkwMHY2MDBIMHoiLz48cGF0aCBmaWxsPSIjZmZmZjAwIiBkPSJNNDUwIDEyNWw5Mi44IDI4NS42LTI0Mi45LTE3Ni41aDMwMC4yTDM1Ny4yIDQxMC42eiIvPjwvc3ZnPg==',
             en: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjM1IDY1MCI+PHBhdGggZD0iTTAgMGgxMjM1djY1MEgwWiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0wIDkyaDEyMzVNMCAyMTRoMTIzNU0wIDMzN2gxMjM1TTAgNDU5aDEyMzVNMCA1ODJoMTIzNSIgc3Ryb2tlPSIjYmUyYTM4IiBzdHJva2Utd2lkdGg9IjYxLjUiLz48cGF0aCBkPSJNMCAwaDQ5NHYzNzFIMFoiIGZpbGw9IiMzYzNiNmUiLz48ZyBmaWxsPSIjZmZmIj48ZyBpZD0icyI+PGcgaWQ9ImMiPjxwYXRoIGlkPSJ0IiBkPSJNMjQ3IDE4bDEwIDI4SDIzN2wxMCAyOHoiLz48dXNlIHhyZWY9IiN0IiB4PSIyNSIvPjx1c2UgeHJlZj0iI3QiIHg9IjUwIi8+PHVzZSB4cmVmPSIjdCIgeD0iNzUiLz48dXNlIHhyZWY9IiN0IiB4PSIxMDAiLz48L2c+PHVzZSB4cmVmPSIjYyIgeT0iMjUiLz48dXNlIHhyZWY9IiNjIiB5PSI1MCIvPjx1c2UgeHJlZj0iI2MiIHk9Ijc1Ii8+PHVzZSB4cmVmPSIjYyIgeT0iMTAwIi8+PC9nPjx1c2UgeHJlZj0iI3MiIHk9IjEzIiB4PSIxMyIvPjx1c2UgeHJlZj0iI3MiIHk9IjM4IiB4PSIxMyIvPjx1c2UgeHJlZj0iI3MiIHk9IjYzIiB4PSIxMyIvPjx1c2UgeHJlZj0iI3MiIHk9Ijg4IiB4PSIxMyIvPjwvZz48L3N2Zz4='
         };
 
-        // --- 2. TỪ ĐIỂN DỊCH ---
         const translations = {
             vi: {
                 desc: "Công cụ nạp phần mềm tự động cho hệ thống chăm sóc bể bán cạn thông minh.",
                 browser_msg: "⚠️ Yêu cầu trình duyệt: Chrome, Edge hoặc Opera trên máy tính.",
+                
+                // --- PHẦN DỊCH CẢNH BÁO MỚI ---
+                warn_title: "LƯU Ý QUAN TRỌNG:",
+                warn_content: "Để tránh lỗi dữ liệu cũ, tại bước xác nhận cài đặt, vui lòng tích chọn:",
+                // ------------------------------
+
                 step_title: "Hướng dẫn cài đặt:",
                 step_1: "Kết nối mạch ESP32 vào máy tính qua cáp USB.",
                 step_2: "Nhấn nút <b>\"CONNECT\"</b> bên dưới.",
@@ -85,6 +97,12 @@
             en: {
                 desc: "Automated firmware flashing tool for the Smart Terrarium system.",
                 browser_msg: "⚠️ Browser Requirement: Chrome, Edge, or Opera on Desktop.",
+                
+                // --- TRANSLATION FOR NEW WARNING ---
+                warn_title: "IMPORTANT NOTE:",
+                warn_content: "To avoid old data conflicts, at the confirmation step, please check:",
+                // -----------------------------------
+
                 step_title: "Installation Guide:",
                 step_1: "Connect ESP32 board to PC via USB cable.",
                 step_2: "Click the <b>\"CONNECT\"</b> button below.",
@@ -98,7 +116,6 @@
             }
         };
 
-        // --- 3. LOGIC CHUYỂN ĐỔI ---
         let currentLang = localStorage.getItem('installer_lang') || 'vi';
 
         function toggleLanguage() {
@@ -109,33 +126,23 @@
 
         function applyLanguage() {
             const t = translations[currentLang];
-            
-            // Cập nhật text thông thường
             document.querySelectorAll('[data-lang]').forEach(el => {
                 const key = el.getAttribute('data-lang');
-                if (t[key]) {
-                    // Dùng innerHTML để giữ lại các thẻ <b> bên trong text
-                    el.innerHTML = t[key];
-                }
+                if (t[key]) el.innerHTML = t[key];
             });
-
-            // Cập nhật nút Cờ
             const btn = document.getElementById('lang-btn');
             const flagSrc = currentLang === 'vi' ? flags.vi : flags.en;
             btn.innerHTML = `<img src="${flagSrc}" class="flag-icon"> ${currentLang.toUpperCase()}`;
         }
 
-        // --- 4. KIỂM TRA TRÌNH DUYỆT (Giữ nguyên logic cũ) ---
         if ("serial" in navigator) {
             document.getElementById("browser-msg").style.display = "none";
         } else {
             document.getElementById("browser-msg").style.display = "block";
         }
 
-        // Khởi chạy ngôn ngữ khi load
         applyLanguage();
 
     </script>
-
 </body>
 </html>
