@@ -244,21 +244,34 @@
 
     <!-- Interactive JS -->
     <script>
-        // Scroll Reveal Animation
+        // Hàm xử lý hiệu ứng cuộn lặp đi lặp lại mượt mà
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
+            
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
+                var elementBottom = reveals[i].getBoundingClientRect().bottom;
+                
+                // Khoảng đệm để hiệu ứng xuất hiện tự nhiên hơn (100px trước khi vào tầm mắt)
+                var elementVisible = 100; 
+                
+                // KIỂM TRA: Nếu phần tử đang nằm trong vùng nhìn thấy của màn hình
+                if (elementTop < windowHeight - elementVisible && elementBottom > 0) {
                     reveals[i].classList.add("active");
+                } 
+                // KIỂM TRA: Nếu cuộn qua hẳn hoặc cuộn ngược lên khiến phần tử khuất bóng
+                else {
+                    reveals[i].classList.remove("active");
                 }
             }
         }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
 
+        // Lắng nghe sự kiện cuộn trang
+        window.addEventListener("scroll", reveal);
+
+        // Chạy kiểm tra ngay lần đầu tải trang
+        reveal();
         // Navbar Scroll Effect
         window.addEventListener("scroll", function() {
             var navbar = document.getElementById("navbar");
