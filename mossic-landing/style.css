@@ -475,16 +475,8 @@ img.icon.glow-icon {
     .overlay-card { position: relative; bottom: 0; left: 0; width: 100%; margin-top: -30px; }
     .tech-circle-wrapper { transform: scale(0.8); }
     .partner-grid {
-        /* Chuyển thành 2 cột bằng nhau */
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    /* Chọn riêng partner-box thứ 3 (box nằm ở hàng thứ 2) */
-    .partner-box:nth-child(3) {
-        grid-column: span 2; /* Trải dài chiếm hết cả 2 cột của hàng 2 */
-        justify-self: center; /* Căn bản thân cái box này vào chính giữa hàng */
-        
-        width: 100%; /* Đảm bảo chiều rộng... */
-        max-width: 350px; /* ...giữ nguyên độ ngắn vừa vặn bằng khít với các box ở trên (bạn có thể tăng giảm số 350px này tùy ý) */
+        /* Điện thoại màn hình hẹp thì xếp dọc 1 cột hoàn toàn */
+        grid-template-columns: 1fr; 
     }
     /* .problem-box { flex-direction: column; }
     .problem-box .box-icon { justify-content: normal; }
@@ -507,8 +499,4 @@ img.icon.glow-icon {
     .grid-2 { grid-template-columns: 1fr; }
     .tech-circle-wrapper { transform: scale(0.6); }
     .glass-banner { padding: 40px 20px; }
-    .partner-grid {
-        /* Điện thoại màn hình hẹp thì xếp dọc 1 cột hoàn toàn */
-        grid-template-columns: 1fr; 
-    }
 }
